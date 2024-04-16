@@ -11,7 +11,6 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
         margin: EdgeInsets.only(top: 50),
@@ -140,9 +139,8 @@ class Home extends StatelessWidget {
         backgroundColor: ColorApp.white,
         selectedItemColor: ColorApp.blue,
         unselectedItemColor: ColorApp.grey,
-        selectedFontSize: 14,
-        unselectedFontSize: 14,
-
+        selectedFontSize: 12,
+        unselectedFontSize: 12,
         onTap: (value) {
           // Respond to item press.
         },
@@ -151,25 +149,26 @@ class Home extends StatelessWidget {
               label: 'Home',
               icon: Image.asset(
                 AssetsConstant.homeBottomImage,
-                height: 22,
+                height: 20,
               )),
           BottomNavigationBarItem(
               label: 'Transaction',
               icon: Image.asset(
                 AssetsConstant.transactionBottomImage,
-                height: 22,
+                height: 20,
               )),
+          BottomNavigationBarItem(label: '', icon: SizedBox()),
           BottomNavigationBarItem(
               label: 'Feed',
               icon: Image.asset(
                 AssetsConstant.feedBottomImage,
-                height: 22,
+                height: 20,
               )),
           BottomNavigationBarItem(
               label: 'Setting',
               icon: Image.asset(
                 AssetsConstant.settingBottomImage,
-                height: 22,
+                height: 20,
               )),
         ],
       ),
@@ -184,25 +183,29 @@ class ListMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Wrap(
       alignment: WrapAlignment.spaceBetween,
-      // runAlignment: WrapAlignment.spaceBetween,
+      runAlignment: WrapAlignment.start,
       runSpacing: 20,
       crossAxisAlignment: WrapCrossAlignment.center,
       spacing: 15,
       children: List.generate(
         listMenu.length,
-        (index) => Column(
-          children: [
-            Image.asset(
-              listMenu[index].image,
-              height: 50,
-            ),
-            Text(
-              listMenu[index].title,
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              style: const TextStyle(fontSize: 12, color: ColorApp.black),
-            ),
-          ],
+        (index) => Container(
+          // alignment: Alignment.topCenter,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset(
+                listMenu[index].image,
+                height: 50,
+              ),
+              Text(
+                listMenu[index].title,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                style: const TextStyle(fontSize: 12, color: ColorApp.black),
+              ),
+            ],
+          ),
         ),
       ),
     );
